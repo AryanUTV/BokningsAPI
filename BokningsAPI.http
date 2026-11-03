@@ -1,6 +1,13 @@
-@BokningsAPI_HostAddress = http://localhost:5279
+@host = https://localhost:7121
 
-GET {{BokningsAPI_HostAddress}}/weatherforecast/
-Accept: application/json
+### Skapa en lokal
+POST {{host}}/api/rooms
+Content-Type: application/json
 
-###
+{
+  "name": "Grupprum 3",
+  "capacity": 6
+}
+
+### Hämta alla lokaler
+GET {{host}}/api/rooms
