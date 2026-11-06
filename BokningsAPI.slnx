@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="../BokningsApi.Tests/BokningsApi.Tests.csproj" Id="f54aade1-d6e3-4e59-a06c-aab8d91aaacd" />
   <Project Path="BokningsAPI.csproj" />
+  <Project Path="BokningsApi.Tests/BokningsApi.Tests.csproj" />
 </Solution>
