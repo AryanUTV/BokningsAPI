@@ -1,6 +1,6 @@
 @host = https://localhost:7121
 
-### Skapa en lokal
+### 1. Skapa en lokal
 POST {{host}}/api/rooms
 Content-Type: application/json
 
@@ -9,5 +9,60 @@ Content-Type: application/json
   "capacity": 6
 }
 
-### Hämta alla lokaler
-GET {{host}}/api/rooms
+### 2. Boka 10-12 (ska gå bra)
+POST {{host}}/api/bookings
+Content-Type: application/json
+
+{
+  "roomId": 1,
+  "bookedBy": "Anna",
+  "startTime": "2026-11-10T10:00:00",
+  "endTime": "2026-11-10T12:00:00"
+}
+
+### 3. Boka 11-13 (ska krocka)
+POST {{host}}/api/bookings
+Content-Type: application/json
+
+{
+  "roomId": 1,
+  "bookedBy": "Bo",
+  "startTime": "2026-11-10T11:00:00",
+  "endTime": "2026-11-10T13:00:00"
+}
+
+### 4. Boka 12-14 (ska gå bra)
+POST {{host}}/api/bookings
+Content-Type: application/json
+
+{
+  "roomId": 1,
+  "bookedBy": "Cia",
+  "startTime": "2026-11-10T12:00:00",
+  "endTime": "2026-11-10T14:00:00"
+}
+
+### 5. Boka en lokal som inte finns
+POST {{host}}/api/bookings
+Content-Type: application/json
+
+{
+  "roomId": 99,
+  "bookedBy": "Dan",
+  "startTime": "2026-11-11T10:00:00",
+  "endTime": "2026-11-11T12:00:00"
+}
+
+### 6. Sluttid före starttid
+POST {{host}}/api/bookings
+Content-Type: application/json
+
+{
+  "roomId": 1,
+  "bookedBy": "Eva",
+  "startTime": "2026-11-12T12:00:00",
+  "endTime": "2026-11-12T10:00:00"
+}
+
+### 7. Hämta alla bokningar
+GET {{host}}/api/bookings
