@@ -50,4 +50,30 @@ public class BookingsController : ControllerBase
         await _db.SaveChangesAsync();
         return Created($"/api/bookings/{booking.Id}", booking);
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Booking>> GetById(int id)
+    {
+        var booking = await _db.Bookings.FindAsync(id);
+        if (booking == null)
+        {
+            return NotFound();
+        }
+
+        return booking;
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var booking = await _db.Bookings.FindAsync(id);
+        if (booking == null)
+        {
+            return NotFound();
+        }
+
+        _db.Bookings.Remove(booking);
+        await _db.SaveChangesAsync();
+        return NoContent();
+    }
 }

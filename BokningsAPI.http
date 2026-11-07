@@ -66,3 +66,12 @@ Content-Type: application/json
 
 ### 7. Hämta alla bokningar
 GET {{host}}/api/bookings
+
+### Hämta en bokning
+GET {{host}}/api/bookings/1
+
+### Ta bort en bokning
+DELETE {{host}}/api/bookings/1
+
+### Hämta en bokning som inte finns
+GET {{host}}/api/bookings/999
