@@ -75,3 +75,30 @@ DELETE {{host}}/api/bookings/1
 
 ### Hämta en bokning som inte finns
 GET {{host}}/api/bookings/999
+
+### Registrera användare
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "anna",
+  "password": "hemligt123"
+}
+
+### Samma användarnamn igen (ska ge 409)
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "anna",
+  "password": "hemligt123"
+}
+
+### För kort lösenord (ska ge 400)
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "bo",
+  "password": "kort"
+}
