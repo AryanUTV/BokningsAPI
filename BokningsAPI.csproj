@@ -18,8 +18,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-	<ItemGroup>
-		<Compile Remove="BokningsApi.Tests\**" />
-	</ItemGroup>
+ <PropertyGroup>
+    <DefaultItemExcludes>$(DefaultItemExcludes);BokningsApi.Tests\**</DefaultItemExcludes>
+  </PropertyGroup>
 
 </Project>
