@@ -102,3 +102,21 @@ Content-Type: application/json
   "username": "bo",
   "password": "kort"
 }
+
+### Logga in (ska ge 200 och en token)
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "anna",
+  "password": "hemligt123"
+}
+
+### Fel lösenord (ska ge 401)
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "anna",
+  "password": "fellosenord"
+}

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.14">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +21,7 @@
   </ItemGroup>
  <PropertyGroup>
     <DefaultItemExcludes>$(DefaultItemExcludes);BokningsApi.Tests\**</DefaultItemExcludes>
+    <UserSecretsId>bd6a478a-1143-47df-b1c2-2ad899abc199</UserSecretsId>
   </PropertyGroup>
 
 </Project>
