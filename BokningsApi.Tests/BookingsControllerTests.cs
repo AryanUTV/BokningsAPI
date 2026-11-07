@@ -133,4 +133,68 @@ public class BookingsControllerTests
 
         Assert.IsType<BadRequestObjectResult>(result.Result);
     }
+
+    [Fact]
+    public async Task GetById_ExistingBooking_ReturnsBooking()
+    {
+        var db = CreateDb();
+        var booking = new Booking
+        {
+            RoomId = 1,
+            BookedBy = "Anna",
+            StartTime = new DateTime(2026, 11, 10, 10, 0, 0),
+            EndTime = new DateTime(2026, 11, 10, 12, 0, 0)
+        };
+        db.Bookings.Add(booking);
+        db.SaveChanges();
+        var controller = new BookingsController(db);
+
+        var result = await controller.GetById(booking.Id);
+
+        Assert.NotNull(result.Value);
+        Assert.Equal("Anna", result.Value.BookedBy);
+    }
+
+    [Fact]
+    public async Task GetById_UnknownBooking_ReturnsNotFound()
+    {
+        var db = CreateDb();
+        var controller = new BookingsController(db);
+
+        var result = await controller.GetById(999);
+
+        Assert.IsType<NotFoundResult>(result.Result);
+    }
+
+    [Fact]
+    public async Task Delete_ExistingBooking_RemovesItAndReturnsNoContent()
+    {
+        var db = CreateDb();
+        var booking = new Booking
+        {
+            RoomId = 1,
+            BookedBy = "Anna",
+            StartTime = new DateTime(2026, 11, 10, 10, 0, 0),
+            EndTime = new DateTime(2026, 11, 10, 12, 0, 0)
+        };
+        db.Bookings.Add(booking);
+        db.SaveChanges();
+        var controller = new BookingsController(db);
+
+        var result = await controller.Delete(booking.Id);
+
+        Assert.IsType<NoContentResult>(result);
+        Assert.Empty(db.Bookings);
+    }
+
+    [Fact]
+    public async Task Delete_UnknownBooking_ReturnsNotFound()
+    {
+        var db = CreateDb();
+        var controller = new BookingsController(db);
+
+        var result = await controller.Delete(999);
+
+        Assert.IsType<NotFoundResult>(result);
+    }
 }
