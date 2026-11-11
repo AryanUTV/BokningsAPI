@@ -1,7 +1,5 @@
 @host = https://localhost:7121
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYW5uYSIsImV4cCI6MTc5NDA4MDUwNywiaXNzIjoiQm9rbmluZ3NBcGkiLCJhdWQiOiJCb2tuaW5nc0FwaVVzZXJzIn0.i7i1kR7bGkJuS4GqKfFulj1kn3yRodYSzONKeBh5Fvk
-
-### 1. Skapa en lokal
+@token = 
 POST {{host}}/api/rooms
 Content-Type: application/json
 
@@ -143,3 +141,6 @@ Authorization: Bearer {{token}}
   "startTime": "2026-11-20T10:00:00",
   "endTime": "2026-11-20T12:00:00"
 }
+
+### Hämta alla bokningar
+GET {{host}}/api/bookings
